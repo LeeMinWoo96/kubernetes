@@ -67,7 +67,7 @@ k = KubernetesPodOperator(namespace='default',
                           image="task1",
                           ports=[port],
                           volumes=[volume],
-                          volume_mounts=[volume_mount]
+                          volume_mounts=[volume_mount],
                           name="test",
                           task_id="task1"
                           )
@@ -77,7 +77,7 @@ k2 = KubernetesPodOperator(namespace='default',
                           image="task2",
                           ports=[port],
                           volumes=[volume],
-                          volume_mounts=[volume_mount]
+                          volume_mounts=[volume_mount],
                           name="test2",
                           task_id="task2"
                           )
