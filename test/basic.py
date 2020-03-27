@@ -70,7 +70,8 @@ k = KubernetesPodOperator(namespace='default',
                           volumes=[volume],
                           volume_mounts=[volume_mount],
                           name="test",
-                          task_id="task1"
+                          task_id="task1",
+                          dag = dag
                           )
 
 
@@ -80,7 +81,8 @@ k2 = KubernetesPodOperator(namespace='default',
                           volumes=[volume],
                           volume_mounts=[volume_mount],
                           name="test2",
-                          task_id="task2"
+                          task_id="task2",
+                          dag = dag
                           )
 
 k2.set_upstream(k)
