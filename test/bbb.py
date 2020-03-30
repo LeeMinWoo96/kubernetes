@@ -37,37 +37,37 @@ dag = DAG(
     dagrun_timeout=timedelta(minutes=60),
 )
 
-run_this_last = DummyOperator(
-    task_id='run_this_last',
+run_this_last1 = DummyOperator(
+    task_id='run_this_last1',
     dag=dag,
 )
 
 # [START howto_operator_bash]
-run_this = BashOperator(
-    task_id='run_after_loop',
+run_this1 = BashOperator(
+    task_id='run_after_loop1',
     bash_command='echo 1',
     dag=dag,
 )
 # [END howto_operator_bash]
 
-run_this >> run_this_last
+run_this1 >> run_this_last1
 
 for i in range(3):
-    task = BashOperator(
-        task_id='runme_' + str(i),
+    task1 = BashOperator(
+        task_id='runme_' + str(i)+str(1),
         bash_command='echo "{{ task_instance_key_str }}" && sleep 1',
         dag=dag,
     )
-    task >> run_this
+    task1 >> run_this1
 
 # [START howto_operator_bash_template]
-also_run_this = BashOperator(
-    task_id='also_run_this',
+also_run_this1 = BashOperator(
+    task_id='also_run_this1',
     bash_command='echo "run_id={{ run_id }} | dag_run={{ dag_run }}"',
     dag=dag,
 )
 # [END howto_operator_bash_template]
-also_run_this >> run_this_last
+also_run_this1 >> run_this_last1
 
 if __name__ == "__main__":
     dag.cli()
