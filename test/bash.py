@@ -19,7 +19,7 @@
 """Example DAG demonstrating the usage of the BashOperator."""
 
 from datetime import timedelta
-
+import time
 from airflow import DAG
 from airflow.operators.bash_operator import BashOperator
 from airflow.operators.dummy_operator import DummyOperator
@@ -51,7 +51,7 @@ run_this = BashOperator(
 # [END howto_operator_bash]
 
 run_this >> run_this_last
-
+time.sleep(1000)
 for i in range(3):
     task = BashOperator(
         task_id='runme_' + str(i),
