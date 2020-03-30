@@ -80,6 +80,23 @@ tolerations = [
      }
 ]
 
+
+default_args = {
+        'owner' : 'airflow',
+        'depends_on_past' : True,
+        'wait_for_downstream' : True,
+        'start_date' : datetime(2020,3,29),
+        'schedule_interval': '@once',
+        }
+
+
+
+dag = DAG(
+        dag_id = 'tt',
+        catchup = True,
+        default_args = default_args,
+        )
+
 k = KubernetesPodOperator(namespace='default',
                           image="ubuntu:16.04",
                           cmds=["bash", "-cx"],
@@ -95,5 +112,6 @@ k = KubernetesPodOperator(namespace='default',
                           is_delete_operator_pod=True,
                           hostnetwork=False,
                           tolerations=tolerations,
-                          configmaps=configmaps
+                          configmaps=configmaps,
+                          dag = dag
                           )
