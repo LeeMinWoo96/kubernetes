@@ -15,27 +15,14 @@ from airflow.contrib.kubernetes.volume_mount import VolumeMount
 
 from datetime import datetime, timedelta
 
-"""
-depends_on_past: when set to True, keeps a task from getting triggered if the previous schedule for the task hasn’t succeeded
-
-wait_fow_downstream: when set to true, an instance of task X will wait for tasks immediately downstream of the previous instance of task X to finish successfully before it runs.
-
-retries (int) – the number of retries that should be performed before failing the task
-
-catchup - backfill 할건지 
-
-"""
-
-
 
                                             
 default_args = {
-        
         'owner' : 'airflow',
         'depends_on_past' : True,
         'wait_for_downstream' : True,
-        'start_date' : datetime(2020,3,25),
-        'schedule_interval': '@once'
+        'start_date' : datetime(2020,3,29),
+        'schedule_interval': '@once',
         }
 
 
@@ -48,18 +35,20 @@ dag = DAG(
 
 
 
-k = KubernetesPodOperator(namespace='airflow',
-                          image="task1",
+k = KubernetesPodOperator(namespace='default',
+                          image=hello-world:latest,
+                          #image="task1",
                           name="test",
                           task_id="task1",
-                          dag = dag
+                          dag = dag,
                           )
 
-k2 = KubernetesPodOperator(namespace='airflow',
-                          image="task2",
+k2 = KubernetesPodOperator(namespace='default',
+                          image=hello-world:latest,
+                          #image="task2",
                           name="test2",
                           task_id="task2",
-                          dag = dag
+                          dag = dag,
                           )
 
 k2.set_upstream(k)
