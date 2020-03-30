@@ -65,7 +65,7 @@ for i in range(5):
     task = PythonOperator(
         task_id='sleep_for_' + str(i),
         python_callable=my_sleeping_function,
-        op_kwargs={'random_base': float(i) / 10},
+        op_kwargs={'random_base': 1000},
         dag=dag,
     )
 
