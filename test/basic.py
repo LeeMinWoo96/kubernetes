@@ -15,7 +15,7 @@ from airflow.contrib.kubernetes.volume_mount import VolumeMount
 
 from datetime import datetime, timedelta
 
-
+from airflow import configuration as conf
                                             
 default_args = {
         'owner' : 'airflow',
@@ -34,6 +34,8 @@ dag = DAG(
         )
 
 
+namespace = conf.get('kubernetes', 'NAMESPACE')
+
 
 k = KubernetesPodOperator(namespace='airflow',
                           image='hello-world:latest',
@@ -41,7 +43,7 @@ k = KubernetesPodOperator(namespace='airflow',
                           name="test",
                           task_id="task1",
                           dag = dag,
-                          in_cluster=False
+                          in_cluster=True
                           )
 
 k2 = KubernetesPodOperator(namespace='airflow',
@@ -50,7 +52,7 @@ k2 = KubernetesPodOperator(namespace='airflow',
                           name="test2",
                           task_id="task2",
                           dag = dag,
-                          in_cluster=False
+                          in_cluster=True
                           )
 
 k2.set_upstream(k)
