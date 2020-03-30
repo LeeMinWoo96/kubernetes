@@ -36,7 +36,7 @@ dag = DAG(
 
 
 k = KubernetesPodOperator(namespace='default',
-                          image=hello-world:latest,
+                          image='hello-world:latest',
                           #image="task1",
                           name="test",
                           task_id="task1",
@@ -44,7 +44,7 @@ k = KubernetesPodOperator(namespace='default',
                           )
 
 k2 = KubernetesPodOperator(namespace='default',
-                          image=hello-world:latest,
+                          image='hello-world:latest',
                           #image="task2",
                           name="test2",
                           task_id="task2",
