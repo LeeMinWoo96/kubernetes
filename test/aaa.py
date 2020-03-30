@@ -51,3 +51,7 @@ start >> run_this
 
 #passing.set_upstream(start)
 #failing.set_upstream(passing)
+
+
+if __name__ == "__main__":
+    dag.cli()
