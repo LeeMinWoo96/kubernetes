@@ -50,7 +50,7 @@ run_this = BashOperator(
 # [END howto_operator_bash]
 
 run_this >> run_this_last
-time.sleep(1000)
+
 for i in range(3):
     task = BashOperator(
         task_id='runme_' + str(i),
