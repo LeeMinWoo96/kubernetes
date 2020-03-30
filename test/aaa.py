@@ -8,14 +8,9 @@ default_args = {
     'owner': 'airflow',
     'depends_on_past': True,
     'start_date': datetime(2020,3,29),
-    'email': ['airflow@example.com'],
-    'email_on_failure': False,
     'wait_for_downstream' : True,
-    'email_on_retry': False,
-    'schedule_interval': '@once',
-    'retries': 1,
-    'retry_delay': timedelta(minutes=5)
-}
+    'schedule_interval': '@once'
+    }
 
 dag = DAG(
     'kubernetes_sample', default_args=default_args , catchup = True,)
