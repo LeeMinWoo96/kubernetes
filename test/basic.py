@@ -57,7 +57,6 @@ k = KubernetesPodOperator(namespace='airflow',
 
 k2 = KubernetesPodOperator(namespace='airflow',
                           image="task2",
-                          ports=[port],
                           name="test2",
                           task_id="task2",
                           dag = dag
