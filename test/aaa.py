@@ -7,16 +7,18 @@ from airflow.operators.dummy_operator import DummyOperator
 default_args = {
     'owner': 'airflow',
     'depends_on_past': True,
-    'start_date': datetime.utcnow(),
+    'start_date': datetime(2020,3,29),
     'email': ['airflow@example.com'],
     'email_on_failure': False,
+    'wait_for_downstream' : True,
     'email_on_retry': False,
+    'schedule_interval': '@once',
     'retries': 1,
     'retry_delay': timedelta(minutes=5)
 }
 
 dag = DAG(
-    'kubernetes_sample', default_args=default_args, schedule_interval=timedelta(minutes=10))
+    'kubernetes_sample', default_args=default_args , catchup = True,)
 
 
 start = DummyOperator(task_id='run_this_first', dag=dag)
