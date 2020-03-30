@@ -26,23 +26,8 @@ catchup - backfill 할건지
 
 """
 
-volume_mount = VolumeMount('test-volume',
-                            mount_path='./',
-                            sub_path=None,
-                            read_only=True)
-
-port = Port('http', 80)
 
 
-
-
-volume_config= {
-    'persistentVolumeClaim':
-      {
-        'claimName': 'test-volume'
-      }
-    }
-volume = Volume(name='test-volume', configs=volume_config)
                                             
 default_args = {
         
@@ -55,7 +40,6 @@ default_args = {
 
 
 
-
 dag = DAG(
         dag_id = 'testing',
         catchup = True,
@@ -64,22 +48,16 @@ dag = DAG(
 
 
 
-k = KubernetesPodOperator(namespace='default',
+k = KubernetesPodOperator(namespace='airflow',
                           image="task1",
-                          ports=[port],
-                          volumes=[volume],
-                          volume_mounts=[volume_mount],
                           name="test",
                           task_id="task1",
                           dag = dag
                           )
 
-
-k2 = KubernetesPodOperator(namespace='default',
+k2 = KubernetesPodOperator(namespace='airflow',
                           image="task2",
                           ports=[port],
-                          volumes=[volume],
-                          volume_mounts=[volume_mount],
                           name="test2",
                           task_id="task2",
                           dag = dag
