@@ -34,24 +34,20 @@ dag = DAG(
         )
 
 
-k = KubernetesPodOperator(namespace='airflow',
+k = KubernetesPodOperator(namespace='default',
                           image='hello-world:latest',
                           #image="task1",
                           name="test",
                           task_id="task1",
                           dag = dag,
-                          in_cluster=True,
-                          config_file=None
                           )
 
-k2 = KubernetesPodOperator(namespace='airflow',
+k2 = KubernetesPodOperator(namespace='default',
                           image='hello-world:latest',
                           #image="task2",
                           name="test2",
                           task_id="task2",
                           dag = dag,
-                          in_cluster=True,
-                           config_file=None
                           )
 
 k2.set_upstream(k)
