@@ -6,17 +6,20 @@ from airflow.operators.dummy_operator import DummyOperator
 
 default_args = {
     'owner': 'airflow',
-    'depends_on_past': True,
     'start_date': datetime(2020,3,29),
-    'wait_for_downstream' : True,
-    'schedule_interval': '@once'
     }
 
 dag = DAG(
-    'kubernetes_sample2', default_args=default_args , catchup = True,)
+    dag_id = 'kubernetes_sample2',
+    schedule_interval='0 0 * * *',
+    default_args=default_args,
+    dagrun_timeout=timedelta(minutes=60),
+    )
 
 
-start = DummyOperator(task_id='run_this_first', dag=dag)
+start = DummyOperator(task_id='run_this_first',
+                      dag=dag,
+                      )
 
 run_this = BashOperator(
     task_id='run_after_loop',
