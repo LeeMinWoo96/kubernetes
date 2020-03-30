@@ -34,7 +34,7 @@ dag = DAG(
         )
 
 
-k = KubernetesPodOperator(namespace='default',
+k = KubernetesPodOperator(namespace='airflow',
                           image='hello-world:latest',
                           #image="task1",
                           name="test",
@@ -44,7 +44,7 @@ k = KubernetesPodOperator(namespace='default',
                           
                           )
 
-k2 = KubernetesPodOperator(namespace='default',
+k2 = KubernetesPodOperator(namespace='airflow',
                           image='hello-world:latest',
                           #image="task2",
                           name="test2",
