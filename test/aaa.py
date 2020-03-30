@@ -44,4 +44,4 @@ failing = KubernetesPodOperator(namespace='default',
                           )
 
 passing.set_upstream(start)
-failing.set_upstream(start)
+failing.set_upstream(passing)
