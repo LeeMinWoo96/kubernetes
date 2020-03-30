@@ -15,6 +15,7 @@ dag = DAG(
     schedule_interval='0 0 * * *',
     default_args=default_args,
     dagrun_timeout=timedelta(minutes=60),
+)
 
 
 
