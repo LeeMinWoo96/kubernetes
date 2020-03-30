@@ -43,7 +43,8 @@ k = KubernetesPodOperator(namespace='airflow',
                           name="test",
                           task_id="task1",
                           dag = dag,
-                          in_cluster=True
+                          in_cluster=True,
+                          config_file=None
                           )
 
 k2 = KubernetesPodOperator(namespace='airflow',
@@ -52,7 +53,8 @@ k2 = KubernetesPodOperator(namespace='airflow',
                           name="test2",
                           task_id="task2",
                           dag = dag,
-                          in_cluster=True
+                          in_cluster=True,
+                           config_file=None
                           )
 
 k2.set_upstream(k)
