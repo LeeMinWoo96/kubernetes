@@ -8,14 +8,14 @@ from airflow.utils.dates import days_ago
 default_args = {
     'owner': 'airflow',
     'start_date': days_ago(2),
-    }
+}
 
 dag = DAG(
     dag_id = 'kubernetes_sample2',
     schedule_interval='0 0 * * *',
     default_args=default_args,
     dagrun_timeout=timedelta(minutes=60),
-    )
+
 
 
 run_this_last = DummyOperator(
@@ -25,10 +25,10 @@ run_this_last = DummyOperator(
 
 run_this = BashOperator(
     task_id='run_after_loop',
-    bash_command='echo 1',
+    bash_command='ls',
     dag=dag,
 )
-run_this >> run_this_last
+run_this_last >> run_this
 
 if __name__ == "__main__":
     dag.cli()
