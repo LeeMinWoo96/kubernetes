@@ -33,8 +33,9 @@ dag = DAG(
         default_args = default_args,
         )
 
+namespace = conf.get('kubernetes', 'NAMESPACE')
 
-k = KubernetesPodOperator(namespace='airflow',
+k = KubernetesPodOperator(namespace=namespace
                           image='hello-world:latest',
                           #image="task1",
                           name="test",
@@ -44,7 +45,7 @@ k = KubernetesPodOperator(namespace='airflow',
                           
                           )
 
-k2 = KubernetesPodOperator(namespace='airflow',
+k2 = KubernetesPodOperator(namespace=namespace
                           image='hello-world:latest',
                           #image="task2",
                           name="test2",
