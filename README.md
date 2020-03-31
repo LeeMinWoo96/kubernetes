@@ -80,7 +80,7 @@ python -c "from cryptography.fernet import Fernet; FERNET_KEY = Fernet.generate_
 
 **7. 의존성 차트 설치**
 
-*7번은 현재는 수정을 설치된 상태이므로 넘어가도 됩니다.*
+*7번은 현재는 설치된 상태이므로 넘어가도 됩니다.*
 
 `helm dependency update` 이 명령은 requirment.yaml 파일을 보고 종속된 다른 차트를 받아오는 명령입니다.
 현재 postgre 0.13.1 차트를 받아오게 되는데 helm version 과 apiVersion 충돌이 있어 수정해두었습니다.
