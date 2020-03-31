@@ -35,7 +35,7 @@ dag = DAG(
 
 namespace = conf.get('kubernetes', 'NAMESPACE')
 
-k = KubernetesPodOperator(namespace=namespace
+k = KubernetesPodOperator(namespace=namespace,
                           image='hello-world:latest',
                           #image="task1",
                           name="test",
@@ -45,7 +45,7 @@ k = KubernetesPodOperator(namespace=namespace
                           
                           )
 
-k2 = KubernetesPodOperator(namespace=namespace
+k2 = KubernetesPodOperator(namespace=namespace,
                           image='hello-world:latest',
                           #image="task2",
                           name="test2",
