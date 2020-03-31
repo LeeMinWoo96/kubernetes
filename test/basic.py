@@ -43,7 +43,7 @@ k = KubernetesPodOperator(namespace=namespace,
                           name="test",
                           task_id="task1",
                           dag = dag,
-                          in_cluster=True,
+                          #in_cluster=True,
                           
                           )
 
@@ -53,7 +53,7 @@ k2 = KubernetesPodOperator(namespace=namespace,
                           name="test2",
                           task_id="task2",
                           dag = dag,
-                          in_cluster=True,
+                         # in_cluster=True,
                           )
 
 k2.set_upstream(k)
