@@ -78,15 +78,16 @@ python -c "from cryptography.fernet import Fernet; FERNET_KEY = Fernet.generate_
 
 ![url](./img/url.PNG)
 
-**7. helm dependency update**
+**7. 의존성 차트 설치**
 
-이 명령은 requirment.yaml 파일을 보고 종속된 다른 차트를 받아오는 명령입니다.
+*7번은 현재는 수정을 설치된 상태이므로 넘어가도 됩니다.*
+
+`helm dependency update` 이 명령은 requirment.yaml 파일을 보고 종속된 다른 차트를 받아오는 명령입니다.
 현재 postgre 0.13.1 차트를 받아오게 되는데 helm version 과 apiVersion 충돌이 있어 수정해두었습니다.
 
 만약 저 명령을 통해 받아온다면 chart 디렉토리의 파일을 압축해제한 후
 template 디렉토리의 yaml 파일들에 들어가 맨 첫줄을 `piVersion: apps/v1`으로 수정하면 됩니다.
 
-현재는 수정을 해둔 상태입니다.
 
 **8. Use Helm to generate the yaml files and deploy Airflow.**
 helm 차트를 배포합니다. 해당 명령어는
