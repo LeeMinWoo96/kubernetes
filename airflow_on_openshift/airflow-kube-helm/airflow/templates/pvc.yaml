@@ -14,6 +14,8 @@ spec:
   resources:
     requests:
       storage: {{ .Values.airflow.dags.persistence.size | quote }}
+  storageClassName: ""
+
 #{{- if .Values.airflow.dags.persistence.storageClass }}
 #{{- if (eq "-" .Values.airflow.dags.persistence.storageClass) }}
   storageClassName: ""
@@ -22,9 +24,6 @@ spec:
 #{{- end }}
 #{{- end }}
 {{- end }}
-#hostPath:
-#   path: /usr/local/dags
-#    type: Directory
 ---
 {{- if (not .Values.airflow.logs.persistence.existingClaim) }}
 kind: PersistentVolumeClaim
@@ -50,9 +49,7 @@ spec:
 #  storageClassName: "{{ .Values.airflow.logs.persistence.storageClass }}"
 #  {{- end }}
 #  {{- end }}
-  {{- end }}
 
-  #hostPath:
-          #path: /usr/local/dags
+{{- end }}
 
 

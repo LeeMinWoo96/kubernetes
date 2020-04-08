@@ -8,6 +8,8 @@ spec:
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Recycle
+  
+
   hostPath:
-    path: "/root/temp/kubernetes/pv/postgre"
+    path: "/var/airflow/postgre"
 

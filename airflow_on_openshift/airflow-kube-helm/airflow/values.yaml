@@ -75,7 +75,7 @@ airflow:
       enabled: true
       ##
       ## Volume access mode
-      accessMode: ReadWriteOnce
+      accessMode: ReadWriteOnce # sharing pv하기 위해
       ##
       ## Persistent Volume Storage Class
       ## If defined, storageClassName: <storageClass>

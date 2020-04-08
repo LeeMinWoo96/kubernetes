@@ -11,4 +11,4 @@ spec:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Recycle
   hostPath:
-    path: "/root/temp/kubernetes/pv/log"
+    path: "/var/airflow/logs"

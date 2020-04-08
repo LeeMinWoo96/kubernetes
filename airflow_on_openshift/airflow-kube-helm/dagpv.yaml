@@ -9,4 +9,4 @@ spec:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Recycle
   hostPath:
-    path: "/root/temp/kubernetes/pv/dag"
+    path: "/var/airflow/dag"

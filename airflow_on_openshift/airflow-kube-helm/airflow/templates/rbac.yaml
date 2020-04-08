@@ -6,7 +6,7 @@ metadata:
   name: minwooRole
 rules:
 - apiGroups: [""]
-  resources: ["pods"]
+  resources: ["pods","pods/log"]
   verbs: ["get", "list","create", "update","redirect", "patch", "watch", "delete", "deletecollection"]
 
 ---

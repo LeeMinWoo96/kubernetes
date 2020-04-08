@@ -27,10 +27,13 @@ spec:
       labels:
         app: {{ template "airflow.name" . }}-scheduler
         release: {{ .Release.Name }}
+  
     spec:
       securityContext:
         fsGroup: 1000
-     
+      nodeSelector:
+        key: worker
+ 
       serviceAccountName: {{ template "airflow.fullname" . }}-cluster-access
       restartPolicy: Always
       containers:
@@ -77,11 +80,12 @@ spec:
               fieldPath: metadata.namespace
         resources:
           requests:
-            memory: "256Mi"
-            cpu: "500m"
+            memory: "512Mi"
+            cpu: "1000m"
           limits:
-            memory: "256Mi"
-            cpu: "500m"
+            memory: "512Mi"
+            cpu: "1000m"
+
         volumeMounts:
         - name: airflow-config
           mountPath: /usr/local/airflow/airflow.cfg

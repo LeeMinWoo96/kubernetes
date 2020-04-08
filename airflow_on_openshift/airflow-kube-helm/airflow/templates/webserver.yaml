@@ -27,7 +27,11 @@ spec:
       labels:
         app: {{ template "airflow.name" . }}-web
         release: {{ .Release.Name }}
+ 
     spec:
+      nodeSelector:
+        key: worker
+
       securityContext:
         fsGroup: 1000
       restartPolicy: Always
