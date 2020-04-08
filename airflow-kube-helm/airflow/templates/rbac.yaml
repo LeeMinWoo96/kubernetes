@@ -1,5 +1,18 @@
+#apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: Role
 apiVersion: rbac.authorization.k8s.io/v1beta1
-kind: ClusterRoleBinding
+metadata:
+  namespace: {{ .Release.Namespace }}
+  name: minwooRole
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["get", "list","create", "update","redirect", "patch", "watch", "delete", "deletecollection"]
+
+---
+
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1beta1
 metadata:
   name: {{ template "airflow.fullname" . }}-cluster-access
   labels:
@@ -13,8 +26,8 @@ subjects:
     name: {{ template "airflow.fullname" . }}-cluster-access
     namespace: {{ .Release.Namespace }}
 roleRef:
-  kind: ClusterRole
-  name: cluster-admin # 이걸 ClusterRole 이랑 매칭시켜야 하는 것 같은데
+  kind: Role
+  name: minwooRole # 이걸 ClusterRole 이랑 매칭시켜야 하는 것 같은데
   # Role 이나 ClusterRole 의 name 
   #
   apiGroup: rbac.authorization.k8s.io

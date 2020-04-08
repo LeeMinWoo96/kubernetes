@@ -26,7 +26,7 @@ airflow:
   image:
     ##
     ## docker-airflow image
-    repository: airflow
+    repository: dlworl207/airflow
     ##
     ## image tag
     tag: latest
@@ -55,7 +55,7 @@ airflow:
       ## If undefined (the default) or set to null, no storageClassName spec is
       ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
       ##   GKE, AWS & OpenStack)
-      # storageClass: default
+      storageClass: null
       ##
       ## Existing claim to use
       existingClaim:
@@ -72,7 +72,7 @@ airflow:
     persistence:
       ##
       ## enable persistance storage
-      enabled: false
+      enabled: true
       ##
       ## Volume access mode
       accessMode: ReadWriteOnce
@@ -90,7 +90,7 @@ airflow:
       existingClaimSubPath:
       ##
       ## Persistant storage size request
-      size: 1Gi
+      size: 2Gi
       #
       # The init-dags.sh is run in an init container before the scheduler and
       # webserver are started. Here you can add logic to initialize the dags
@@ -108,6 +108,8 @@ airflow:
       subpath: test
       #subpath: dags 
       branch: master
+      username: asd
+      password: asd
       ##
       ## Number of seconds to wait between git synchronizations
       wait: 60 # 어떤 주기로 땡길건지 

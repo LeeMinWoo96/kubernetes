@@ -1,0 +1,30 @@
+[2020-04-07 04:51:17,808] {taskinstance.py:616} INFO - Dependencies all met for <TaskInstance: asdasd.runme_1 2020-04-05T00:00:00+00:00 [queued]>
+[2020-04-07 04:51:17,814] {taskinstance.py:616} INFO - Dependencies all met for <TaskInstance: asdasd.runme_1 2020-04-05T00:00:00+00:00 [queued]>
+[2020-04-07 04:51:17,814] {taskinstance.py:834} INFO - 
+--------------------------------------------------------------------------------
+[2020-04-07 04:51:17,814] {taskinstance.py:835} INFO - Starting attempt 1 of 1
+[2020-04-07 04:51:17,814] {taskinstance.py:836} INFO - 
+--------------------------------------------------------------------------------
+[2020-04-07 04:51:17,828] {taskinstance.py:855} INFO - Executing <Task(BashOperator): runme_1> on 2020-04-05T00:00:00+00:00
+[2020-04-07 04:51:17,829] {base_task_runner.py:133} INFO - Running: ['airflow', 'run', 'asdasd', 'runme_1', '2020-04-05T00:00:00+00:00', '--job_id', '3', '--pool', 'default_pool', '--raw', '-sd', 'DAGS_FOLDER/bbb.py', '--cfg_path', '/tmp/tmpqqv_q80v']
+[2020-04-07 04:51:18,701] {base_task_runner.py:115} INFO - Job 3: Subtask runme_1 /usr/local/lib/python3.6/site-packages/airflow/configuration.py:593: DeprecationWarning: Specifying both AIRFLOW_HOME environment variable and airflow_home in the config file is deprecated. Please use only the AIRFLOW_HOME environment variable and remove the config file entry.
+[2020-04-07 04:51:18,701] {base_task_runner.py:115} INFO - Job 3: Subtask runme_1   warnings.warn(msg, category=DeprecationWarning)
+[2020-04-07 04:51:18,835] {base_task_runner.py:115} INFO - Job 3: Subtask runme_1 [2020-04-07 04:51:18,835] {settings.py:213} INFO - settings.configure_orm(): Using pool settings. pool_size=5, max_overflow=10, pool_recycle=1800, pid=8
+[2020-04-07 04:51:18,858] {base_task_runner.py:115} INFO - Job 3: Subtask runme_1 /usr/local/lib/python3.6/site-packages/psycopg2/__init__.py:144: UserWarning: The psycopg2 wheel package will be renamed from release 2.8; in order to keep installing from binary please use "pip install psycopg2-binary" instead. For details see: <http://initd.org/psycopg/docs/install.html#binary-install-from-pypi>.
+[2020-04-07 04:51:18,858] {base_task_runner.py:115} INFO - Job 3: Subtask runme_1   """)
+[2020-04-07 04:51:18,991] {base_task_runner.py:115} INFO - Job 3: Subtask runme_1 [2020-04-07 04:51:18,990] {__init__.py:51} INFO - Using executor LocalExecutor
+[2020-04-07 04:51:19,453] {base_task_runner.py:115} INFO - Job 3: Subtask runme_1 [2020-04-07 04:51:19,452] {dagbag.py:90} INFO - Filling up the DagBag from /usr/local/airflow/dags/bbb.py
+[2020-04-07 04:51:19,479] {base_task_runner.py:115} INFO - Job 3: Subtask runme_1 [2020-04-07 04:51:19,479] {cli.py:516} INFO - Running <TaskInstance: asdasd.runme_1 2020-04-05T00:00:00+00:00 [running]> on host asdasdrunme1-e1af794af8684de391c681d096d1f4a2
+[2020-04-07 04:51:19,496] {bash_operator.py:81} INFO - Tmp dir root location: 
+ /tmp
+[2020-04-07 04:51:19,497] {bash_operator.py:91} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_ID=asdasd
+AIRFLOW_CTX_TASK_ID=runme_1
+AIRFLOW_CTX_EXECUTION_DATE=2020-04-05T00:00:00+00:00
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2020-04-05T00:00:00+00:00
+[2020-04-07 04:51:19,497] {bash_operator.py:105} INFO - Temporary script location: /tmp/airflowtmpwivuw5em/runme_1l1o0_e7p
+[2020-04-07 04:51:19,497] {bash_operator.py:115} INFO - Running command: echo "asdasd__runme_1__20200405" && sleep 1
+[2020-04-07 04:51:19,502] {bash_operator.py:124} INFO - Output:
+[2020-04-07 04:51:19,503] {bash_operator.py:128} INFO - asdasd__runme_1__20200405
+[2020-04-07 04:51:20,510] {bash_operator.py:132} INFO - Command exited with return code 0
+[2020-04-07 04:51:22,813] {logging_mixin.py:95} INFO - [[34m2020-04-07 04:51:22,812[0m] {[34mlocal_task_job.py:[0m105} INFO[0m - Task exited with return code 0[0m

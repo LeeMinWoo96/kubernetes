@@ -14,13 +14,13 @@ spec:
   resources:
     requests:
       storage: {{ .Values.airflow.dags.persistence.size | quote }}
-{{- if .Values.airflow.dags.persistence.storageClass }}
-{{- if (eq "-" .Values.airflow.dags.persistence.storageClass) }}
+#{{- if .Values.airflow.dags.persistence.storageClass }}
+#{{- if (eq "-" .Values.airflow.dags.persistence.storageClass) }}
   storageClassName: ""
-{{- else }}
-  storageClassName: "{{ .Values.airflow.dags.persistence.storageClass }}"
-{{- end }}
-{{- end }}
+#{{- else }}
+#  storageClassName: "{{ .Values.airflow.dags.persistence.storageClass }}"
+#{{- end }}
+#{{- end }}
 {{- end }}
 #hostPath:
 #   path: /usr/local/dags
@@ -42,13 +42,14 @@ spec:
   resources:
     requests:
       storage: {{ .Values.airflow.logs.persistence.size | quote }}
-  {{- if .Values.airflow.logs.persistence.storageClass }}
-  {{- if (eq "-" .Values.airflow.logs.persistence.storageClass) }}
-  storageClassName: ""
-  {{- else }}
-  storageClassName: "{{ .Values.airflow.logs.persistence.storageClass }}"
-  {{- end }}
-  {{- end }}
+  storageClassName: "" 
+#  {{- if .Values.airflow.logs.persistence.storageClass }}
+#  {{- if (eq "-" .Values.airflow.logs.persistence.storageClass) }}
+#  storageClassName: ""
+#  {{- else }}
+#  storageClassName: "{{ .Values.airflow.logs.persistence.storageClass }}"
+#  {{- end }}
+#  {{- end }}
   {{- end }}
 
   #hostPath:
