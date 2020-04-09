@@ -49,27 +49,25 @@ helm upgrade --install airflow ./airflow/ --namespace airflow  --values ./airflo
 
 *pod가 running 상태이면 동작 완료 pending 상태라면 pv와 pvc가 정상적으로 Bounding 되었는지 확인 또는 pod을 누른 후 Event 확인*
 
-2. airflow web 접속 <br>
+2. airflow web 접속 
     
+    1 . 우측 메뉴에 Networking 의 Routes 선택
     
-    1. 우측 메뉴에 Networking 의 Routes 선택
+    2 . Create Route 선택
     
-    2. Create Route 선택
-    
-    3. 이름과 서비스 (web) 선택
+    3 . 이름과 서비스 (web) 선택
     
 ![](./img/route.PNG)
 
-    4. port 설정 후 생성
+    4 . port 설정 후 생성
     
 ![](./img/route2.PNG)
 
-    5. 생성된 Location 경로 host파일에 등록
+    5 . 생성된 Location 경로 host파일에 등록
     
 ![](./img/route3.PNG)
     
-
-    6. 접속하여 정상작동 확인
+    6 . 접속하여 정상작동 확인
     
 ![](./img/ui.PNG)
     
