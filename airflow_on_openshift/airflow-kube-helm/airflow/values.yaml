@@ -47,7 +47,7 @@ airflow:
 
   logs:
     persistence:
-      accessMode: ReadWriteOnce
+      accessMode: ReadWriteMany
       ##
       ## Persistent Volume Storage Class
       ## If defined, storageClassName: <storageClass>
@@ -62,7 +62,7 @@ airflow:
       existingClaimSubPath:
       ##
       ## Persistant storage size request
-      size: 1Gi
+      size: 5Gi
 
   ##
   ## Configure DAGs deployment and update
@@ -75,7 +75,7 @@ airflow:
       enabled: true
       ##
       ## Volume access mode
-      accessMode: ReadWriteOnce # sharing pv하기 위해
+      accessMode: ReadWriteMany # sharing pv하기 위해
       ##
       ## Persistent Volume Storage Class
       ## If defined, storageClassName: <storageClass>

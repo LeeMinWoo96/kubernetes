@@ -39,7 +39,7 @@ print('debug :  ', namespace)
 
 k = KubernetesPodOperator(namespace=namespace,
                           #image='hello-world:latest',
-                          image="task1",
+                          image="dlworl207/task1:latest",
                           name="test",
                           task_id="task1",
                           dag = dag,
@@ -49,7 +49,7 @@ k = KubernetesPodOperator(namespace=namespace,
 
 k2 = KubernetesPodOperator(namespace=namespace,
                           #image='hello-world:latest',
-                          image="task2",
+                          image="dlworl207/task2:latest",
                           name="test2",
                           task_id="task2",
                           dag = dag,

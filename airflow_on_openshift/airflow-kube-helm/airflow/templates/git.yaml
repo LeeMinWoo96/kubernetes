@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: git-sync 
+  labels:
+    app: git-sync
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  selector:
+    matchLabels:
+      app: git-sync 
+      release: {{ .Release.Name }}
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 0
+      maxUnavailable: 100%
+  template:
+    metadata:
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/configmaps.yaml") . | sha256sum }}
+        configmap.fabric8.io/update-on-change: "{{ template "airflow.fullname" . }}-env"
+      labels:
+        app: git-sync
+        release: {{ .Release.Name }}
+
+    spec:
+      securityContext:
+        fsGroup: 1000
+      nodeSelector:
+        key: worker
+
+      serviceAccountName: {{ template "airflow.fullname" . }}-cluster-access
+      restartPolicy: Always
+      
+      containers:
+      - name: git-sync
+        image: k8s.gcr.io/git-sync:v3.0.1
+        imagePullPolicy: IfNotPresent
+        volumeMounts:
+          - name: airflow-dags
+            mountPath: /git
+        env:
+          - name: GIT_SYNC_REPO
+            value: {{ .Values.airflow.dags.git.url }}
+          - name: GIT_SYNC_BRANCH
+            value: {{ .Values.airflow.dags.git.branch }}
+          - name: GIT_SYNC_ROOT # 여긴 git-sync 컨테이너에서 저장해올 위치임
+            # 즉 git_sync 컨테이너 의 git 폴더에 저장한다 이런것
+            value: /git
+          - name: GIT_SYNC_DEST # 이것또한 그러함  그걸 마운트 시키는 것 뿐
+            value: repo  # 생성되는 서브 폴더
+          - name: GIT_SYNC_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: git
+                key: GIT_SYNC_USERNAME
+          - name: GIT_SYNC_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: git
+                key: GIT_SYNC_PASSWORD
+
+      volumes:
+      - name: {{ template "airflow.fullname" . }}-dags
+        persistentVolumeClaim:
+           claimName: {{ template "airflow.fullname" . }}-dags
+
