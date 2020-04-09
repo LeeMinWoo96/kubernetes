@@ -51,23 +51,23 @@ helm upgrade --install airflow ./airflow/ --namespace airflow  --values ./airflo
 
 2. airflow web 접속 
     
-    1 . 우측 메뉴에 Networking 의 Routes 선택
+    - 우측 메뉴에 Networking 의 Routes 선택
     
-    2 . Create Route 선택
+    - Create Route 선택
     
-    3 . 이름과 서비스 (web) 선택
+    - 이름과 서비스 (web) 선택
     
 ![](./img/route.PNG)
 
-    4 . port 설정 후 생성
+    - port 설정 후 생성
     
 ![](./img/route2.PNG)
 
-    5 . 생성된 Location 경로 host파일에 등록
+    - 생성된 Location 경로 host파일에 등록
     
 ![](./img/route3.PNG)
     
-    6 . 접속하여 정상작동 확인
+    - 접속하여 정상작동 확인
     
 ![](./img/ui.PNG)
     
