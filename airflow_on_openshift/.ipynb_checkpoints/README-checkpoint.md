@@ -18,6 +18,8 @@ kubernetes 환경에서 사용되던 airflow 를 openshift plattfom에 맞게 �
 
 `git clone https://github.com/LeeMinWoo96/kubernetes.git`
 
+*pod deploy*
+
 ```
 cd airflow_on_openshift/airflow-kube-helm
 
@@ -38,6 +40,7 @@ kubectl create -f pv.yaml
 helm upgrade --install airflow ./airflow/ --namespace airflow  --values ./airflow/values.yaml
 
 ```
+---
 
 ### airflow 확인
 
@@ -70,23 +73,25 @@ helm upgrade --install airflow ./airflow/ --namespace airflow  --values ./airflo
     - 접속하여 정상작동 확인
     
 ![](./img/ui.PNG)
-    
+
+---
+
 ### 참고사항
 
-**현재 pv 경로는 192.168.1.10 의 nfshare/airflow**
+**1. 현재 pv 경로는 192.168.1.10 의 nfshare/airflow**
 
-**dag 파일들은 git에서 관리 위 git 주소의 test 디렉토리, git 주소 변경하려면 values.yaml 에서 수정**
+**2. dag 파일들은 git에서 관리 위 git 주소의 test 디렉토리, git 주소 변경하려면 values.yaml 에서 수정**
 
-**provisioner를 사용하려면 deployment 를 관리하는 yaml 파일에서 storageClassName="" -> storageClassName="<provisioner name>" 으로 변경 storageClassName="" 는 default storageClass를 사용한다는 뜻이 아니라 아예 storageClass를 사용하지 않는다는 뜻**
+**3. provisioner를 사용하려면 deployment 를 관리하는 yaml 파일에서 storageClassName="" -> storageClassName="<provisioner name>" 으로 변경 storageClassName="" 는 default storageClass를 사용한다는 뜻이 아니라 아예 storageClass를 사용하지 않는다는 뜻**
     
-**현재 pod들을 worker3 노드에 pending 되도록 고정해두었지만 deployment 관리하는 ymal 에서 지우면 사용량 적은 node에 할당**
+**4. 현재 pod들을 worker3 노드에 pending 되도록 고정해두었지만 deployment 관리하는 ymal 에서 지우면 사용량 적은 node에 할당**
 
 ![](./img/node.PNG)
     
 
 
 
-
+---
 
 ### 참고자료
 
