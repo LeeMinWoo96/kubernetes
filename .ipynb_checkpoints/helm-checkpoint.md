@@ -56,8 +56,9 @@ tiller 설치 ```helm init --service-account tiller```
 
 ### v3설치
 
-[helm v3 설치](https://velog.io/@rudasoft/Helm-%EC%84%A4%EC%B9%98-m0k3y75ock)
+[helm v3 설치 window](https://velog.io/@rudasoft/Helm-%EC%84%A4%EC%B9%98-m0k3y75ock)
 
+[linux](https://gruuuuu.github.io/cloud/l-helm-basic/#)
 ----
 
 
