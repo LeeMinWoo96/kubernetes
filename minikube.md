@@ -31,7 +31,7 @@ sudo apt-get update && \
 
 
 
-**Kubernetes 1.18 ~**
+**Kubernetes 1.18~**
 
 ```sudo apt install conntrack```
 
