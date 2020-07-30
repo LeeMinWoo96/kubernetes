@@ -28,7 +28,7 @@ sudo mv ./kubectl /usr/local/bin/kubectl
 sudo apt-get update && \
     sudo apt-get install docker.io -y
 ```
-**
+
 
 
 **Kubernetes 1.18 ~**
